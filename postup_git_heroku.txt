@@ -1,0 +1,5 @@
+1.status
+2.add file/s
+3.commit files
+4.push to the master branch
+5.push master to heroku

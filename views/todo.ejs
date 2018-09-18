@@ -1,0 +1,90 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>To-do list</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+  <script src="/assets/todo-list.js"></script>
+  <link rel="stylesheet" href="/assets/dark_bootstrap.css" type="text/css">
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+  <style>
+      body{
+          background: #0d1521;
+          font-family: tahoma;
+          color: #989898;;
+      }
+      .doubletap-delete{
+          padding: 1%;
+          margin-top: 1%;
+          background:#2a2a2a;
+      }
+      .infomessage-style{
+          padding: 1%;
+          margin-top: 2%;
+      }
+      .task-title{
+          background:grey;
+          width:102%;
+          margin: -1%;
+          padding: 0.5%;
+          padding-left: 1%;
+          padding-top: 1%;
+          float:left;
+          color:#0d1521;
+      }
+      .task-body{
+          margin-top: 4%;
+      }
+  </style>  
+</head>
+
+<body>
+  <div class="container">
+    <div id="todo-table">
+    <form>
+        <div class="form-group">
+            <input id="3" type="text" name="item_title" class="form-control" placeholder="Title of the task..." required />
+        </div>
+        <div class="form-group">
+            <input id="1" type="text" name="item" class="form-control" placeholder="Description" required />
+        </div>
+        <div class="form-group">
+            <input id="2" type="date" name="dateFinished" class="form-control" required />
+        </div>
+        <button class="btn btn-primary" type="submit">Add item</button>
+    </form>
+    <br>
+    <h4>List of tasks</h4>
+    <div class="tasks">
+        <% for(var i=0;i<todos.length;i++){ %>
+            <div id="<%= todos[i]._id %>" class="rounded doubletap-delete">
+                <div class="task-title rounded-top"><h5><%= todos[i].item_title %></h5></div>
+                <div class="task-body">
+                <p><%= "Original estimate: " + todos[i].dateFinished %></p>
+                <p><%= todos[i].item  %></p>
+                <button class="btn btn-primary" onclick="">Update item</button>
+                </div>
+            </div>
+        <% } %>
+    </div> 
+    <!--   
+    <ul>
+        <% for(var i=0;i<todos.length;i++){ %>
+            <li id="<%= todos[i]._id %>" class="list-group-item rounded"><%= "Original estimate: " + todos[i].dateFinished %> <br> <%= todos[i].item  %> </li>
+        <% } %>
+    </ul>
+    -->
+    </div>
+    <div class="alert bg-primary infomessage-style">
+        <strong>Hint!:</strong> Doubletap task to delete it.
+    </div>
+  </div>  
+</body>
+</html>
